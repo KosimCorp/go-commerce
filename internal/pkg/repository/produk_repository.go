@@ -19,3 +19,13 @@ func (p ProdukRepository) FindAll() (result []model.Produk, err error) {
 
 	return
 }
+
+func (p ProdukRepository) Find(id int) (result model.Produk, err error) {
+	err = p.db.First(&result, id).Error
+
+	return
+}
+
+func (p ProdukRepository) Create(produk *model.Produk) error {
+	return p.db.Create(produk).Error
+}

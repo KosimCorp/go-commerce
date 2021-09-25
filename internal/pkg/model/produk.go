@@ -5,11 +5,11 @@ import "gorm.io/gorm"
 type Produk struct {
 	gorm.Model
 
-	Name             string
-	Description      string
-	Harga            int
+	Name             string `binding:"required"`
+	Description      string `binding:"required"`
+	Harga            int    `binding:"required"`
 	ImageUrl         string
-	KategoriProdukID int
+	KategoriProdukID int `binding:"required"`
 	KategoriProduk   KategoriProduk
 	TokoID           int
 	Toko             Toko

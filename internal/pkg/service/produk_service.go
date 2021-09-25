@@ -22,3 +22,23 @@ func (p ProdukService) FindAll() (*[]model.Produk, bool) {
 
 	return &data, true
 }
+
+func (p ProdukService) Find(id int) (*model.Produk, bool) {
+	data, err := p.produkRespository.Find(id)
+
+	if err != nil {
+		return nil, false
+	}
+
+	return &data, true
+}
+
+func (p ProdukService) Create(produk *model.Produk) bool {
+	err := p.produkRespository.Create(produk)
+
+	if err != nil {
+		return false
+	}
+
+	return true
+}
