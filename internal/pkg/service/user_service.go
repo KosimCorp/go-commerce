@@ -8,15 +8,15 @@ import (
 )
 
 type UserService struct {
-	userRespository *repository.UserRepository
+	repository *repository.UserRepository
 }
 
-func NewUserService(userRepository *repository.UserRepository) *UserService {
-	return &UserService{userRespository: userRepository}
+func NewUserService(repository *repository.UserRepository) *UserService {
+	return &UserService{repository: repository}
 }
 
 func (u UserService) Login(username string, password string) (*model.User, bool) {
-	user, err := u.userRespository.FindByCredentials(username)
+	user, err := u.repository.FindByCredentials(username)
 
 	if err != nil {
 		return nil, false
